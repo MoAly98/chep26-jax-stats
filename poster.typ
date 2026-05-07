@@ -1,4 +1,4 @@
-#import "template.typ": poster, section, princeton-orange, princeton-zebra-fill
+#import "template.typ": poster, princeton-orange, princeton-zebra-fill, section
 
 #import "@preview/cetz:0.4.0": canvas, draw
 #import "@preview/cetz-plot:0.1.2": plot
@@ -40,15 +40,16 @@
 
     // content
     #columns(2)[
-      
+
       == Transforms
       #v(0.25em)
       - jax.jit: compile your code for lightning-fast performance
       - jax.grad: automatic differentiation for easy gradient-based optimization
       - jax.vmap: vectorize your code for efficient batch processing
-      
-      #colbreak() 
-      
+      #image("transforms.pdf", width: 92%)
+
+      #colbreak()
+
       == JAX Ecosystem
       #v(0.25em)
       - optimistix: JAX transform-compatible optimization algorithms
@@ -64,7 +65,7 @@
 
     // content
     #columns(3)[
-      
+
       == Evermore (Binned)
       #v(0.25em)
 
@@ -74,7 +75,7 @@
         highlights: (
           (line: 6, start: 3, end: 4, fill: princeton-orange),
           (line: 7, start: 3, end: 6, fill: princeton-orange),
-        )
+        ),
       )
       ```python
       import typing as tp
@@ -90,15 +91,36 @@
         syst=evm.NormalParameter(0.0),
       )
       ```
-      
-      #colbreak() 
-      
-      == Paramore (Unbinned)
+
+      #colbreak()
+
+      == #box(image("paramore.png", height: 1.5em), baseline: 30%) Paramore (Unbinned)
       #v(0.25em)
-      #lorem(66) 
-      
-      #colbreak() 
-      
+
+      #text(size: 31pt)[
+        #codly(
+          languages: codly-languages,
+          zebra-fill: princeton-zebra-fill,
+        )
+        ```python
+        import paramore as pm
+
+        lower, upper = 100.0, 180.0
+
+        signal = pm.Gaussian(mu=125.0, sigma=2.0, lower=lower, upper=upper)
+        background = pm.Exponential(lambd=0.05, lower=lower, upper=upper)
+
+        model = pm.SumPDF(
+            pdfs=[signal, background],
+            extended_vals=[500.0, 5000.0],
+            lower=lower,
+            upper=upper
+        )
+        ```
+      ]
+
+      #colbreak()
+
       == Everwillow (Inference)
       #v(0.25em)
       #lorem(66)
@@ -115,19 +137,19 @@
 
       == Models (pyhf, evermore, ...)
       #v(0.25em)
-      #lorem(50) 
-      
-      #colbreak() 
-      
+      #lorem(50)
+
+      #colbreak()
+
       == Combined Likelihood (statelib)
       #v(0.25em)
-      #lorem(50) 
-      
-      #colbreak() 
-      
+      #lorem(50)
+
+      #colbreak()
+
       == Everwillow (Inference)
       #v(0.25em)
-      #lorem(50) 
+      #lorem(50)
     ]
   ]
 
@@ -136,11 +158,11 @@
     title: "Links and Resources",
     icon: emoji.clip,
   )[
-      Checkout out the projects on #link("GitHub")[GitHub]:
+    Checkout out the projects on #link("GitHub")[GitHub]:
 
-      - #link("https://github.com/pfackeldey/evermore")[evermore]
-      - #link("https://github.com/maxgalli/paramore")[paramore]
-      - #link("https://github.com/MoAly98/everwillow")[everwillow]
+    - #link("https://github.com/pfackeldey/evermore")[evermore]
+    - #link("https://github.com/maxgalli/paramore")[paramore]
+    - #link("https://github.com/MoAly98/everwillow")[everwillow]
   ]
 
 ]
