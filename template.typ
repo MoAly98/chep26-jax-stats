@@ -6,7 +6,7 @@
 #let poster(body) = {
   grid(
     columns: 1,
-    rows: (10%, 1%, 85%, 1%, 3%),
+    rows: (10%, 1%, 87%, 1%, 1%),
 
     // Top = title row
     [
@@ -24,13 +24,13 @@
 
           // Left
           [
-            #place(horizon + left, figure(image("assets/logos/princeton-logo.svg", width: auto, height: 220pt)))
+            #place(horizon + left, figure(image("assets/logos/princeton-logo.svg", width: auto, height: 200pt)))
           ],
           // Center
           [
             #place(horizon + center)[
-              #text(size: 70pt, fill: black)[
-                *Differentiable Everything: A JAX Ecosystem for Likelihood-Based Inference in HEP*
+              #text(size: 65pt, fill: black)[
+                *A JAX Ecosystem for Likelihood-Based Inference in HEP*
                 #v(15%, weak: true)
               ]
               #text(size: 42pt)[
@@ -43,7 +43,11 @@
             ]
           ],
           [
-            #place(horizon + right, figure(image("assets/logos/Iris-hep-5-just-graphic.svg", width: auto, height: 220pt)))
+            #place(horizon + right, figure(image(
+              "assets/logos/Iris-hep-5-just-graphic.svg",
+              width: auto,
+              height: 200pt,
+            )))
           ],
         ),
       )
@@ -103,7 +107,7 @@
           // Left
           [
             #place(horizon + left)[
-              #text(size: 36pt)[
+              #text(size: 28pt)[
                 *Acknowledgements:* This work was supported by the National Science Foundation under Cooperative Agreement PHY-2323298 and grant OAC-2103945
               ]
             ]
@@ -111,7 +115,7 @@
           // Right
           [
             #place(horizon + right)[
-              #text(size: 36pt)[
+              #text(size: 28pt)[
                 *Contact:*\ #link("mohamed.aly@cern.ch")[mohamed.aly\@cern.ch]
               ]
             ]
@@ -132,7 +136,7 @@
     // enable the following two for a more "boxed" look
     // radius: 8pt,
     // stroke: princeton-stroke,
-    
-    content
+
+    content,
   )
 }

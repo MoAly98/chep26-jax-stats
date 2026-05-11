@@ -27,90 +27,88 @@
 // poster content, function from `template.typ`
 #poster[
   #section[
-    #align(left)[#heading("Statistical Analysis in HEP", level: 1)]
-    #v(0.5em)
-    #align(center)[
-      #image("assets/infographs/hepstats.pdf", width: 60%)   // was 92%
-    ]
+    #align(center)[#image("assets/infographs/hepstats_2.pdf", width: 100%)]
   ]
-
+  #v(-1.5em)
   #section[
-    #align(left)[#heading("Why JAX?", level: 1)]
-    #v(0.5em)
-
-    #align(center)[
-      #grid(
-        columns: (35%, 62.5%),
-        gutter: 1em,
-        align: horizon,
-        align(center)[#image("assets/infographs/ecosys.pdf", width: 100%)], align(center)[#image("assets/infographs/transforms_color.pdf", width: 100%)],
-      )
-    ]
+    // #grid(
+    //   columns: (auto, 1fr),
+    //   column-gutter: 1.5em,
+    //   align: horizon,
+    //   heading(level: 1)[
+    //     The case for #box(image("assets/logos/jax-logo.webp", height: 1em))
+    //   ],
+    //   align(right)[#image("assets/infographs/whyjax_2.pdf", width: 84%)],
+    // )
+    #align(center)[#heading[The case for #box(image("assets/logos/jax-logo.webp", height: 1em))]]
+    #v(1.5em)
+    #align(center)[#image("assets/infographs/whyjax_2.pdf", width: 96%)]
   ]
-
+  #v(-1.5em)
   #section[
-    #heading("Quickstart: unbinned fit", level: 1)
-    #v(0.5em)
+    #align(center)[#heading("A JAX ecosystem for HEP statistics", level: 1)]
+    #v(1.5em)
+    #let logo-height = 60pt
+    #let logo-height-ew = 80pt
+    #let code-size = 22pt
+    #let label-size = 32pt
+    #let cell-width = 92%
 
-    #block(
-      //fill: princeton-orange.transparentize(95%),
-      //stroke: princeton-orange.transparentize(60%) + 0.8pt,
-      //radius: 6pt,
-      //inset: 1.2em,
-      //width: 100%,
-      grid(
-        columns: (32%, 30%, 33%),
-        column-gutter: 1em,
-        [
-          == #box(image("assets/logos/evermore.png", height: 1.5em), baseline: 20%)
-          #v(0.25em)
+    #let code-col = 900pt          // tune to your slide width
 
-          #codly(
-            display-name: false,
-            zebra-fill: princeton-zebra-fill,
-            // highlights: (
-            //   (line: 6, start: 3, end: 4, fill: princeton-orange),
-            //   (line: 7, start: 3, end: 6, fill: princeton-orange),
-            // ),
+    #grid(
+      columns: (200pt, code-col, code-col),
+      column-gutter: 0.5em,
+      align: (left + horizon, top, top),
+
+      // ─── ROW 1: Primitives ────────────────────────────────
+
+      text(size: label-size, weight: "bold")[Primitives],
+
+      [
+        #align(center)[#block(width: cell-width)[
+          #place(
+            top + right,
+            dx: -0.4em,
+            dy: 0.3em,
+            image("assets/logos/evermore.png", height: logo-height),
           )
-          ```python
-          import typing as tp
-          import evermore as evm
-
-          # PyTree of evm.Parameters
-          class Params(tp.NamedTuple):
-            mu: evm.Parameter
-            syst: evm.NormalParameter
-
-          params = Params(
-            mu=evm.Parameter(1.0),
-            syst=evm.NormalParameter(0.0),
-          )
-          ```
-        ],
-        [
-          == #box(image("assets/logos/paramore.png", height: 1.5em), baseline: 20%)
-          #v(0.25em)
-
-          #text(size: 31pt)[
-            #codly(
-              display-name: false,
-              zebra-fill: princeton-zebra-fill,
+          #text(size: code-size)[
+            #codly(display-name: false, zebra-fill: princeton-zebra-fill)
+            ```python
+            import jax.numpy as jnp
+            import evermore as evm
+            hist = jnp.array([...])
+            syst = evm.NormalParameter(name="syst")
+            # lnN +/- 10% on the yield
+            modifier = syst.scale_log_asymmetric(
+                up=jnp.array([1.1]),
+                down=jnp.array([0.9]),
             )
+            modified_hist = modifier(hist)
+            ```
+          ]
+          #v(-0.3em)
+          #align(right)[#text(size: 26pt, fill: rgb("#64748B"), style: "italic")[(parameters + constraints)]]
+        ]]
+      ],
+      [
+        #align(center)[#block(width: cell-width)[
+          #place(
+            top + right,
+            dx: -0.4em,
+            dy: 0.3em,
+            image("assets/logos/paramore.png", height: logo-height),
+          )
+          #text(size: code-size)[
+            #codly(display-name: false, zebra-fill: princeton-zebra-fill)
             ```python
             import paramore as pm
-
             lower, upper = 100.0, 180.0
-
-            sig = pm.Gaussian(
-                mu=125.0, sigma=2.0,
-                lower=lower, upper=upper
-            )
-            bkg = pm.Exponential(
-                lambd=0.05,
-                lower=lower, upper=upper
-            )
-
+            sig = pm.Gaussian(mu=125.0, sigma=2.0,
+                            lower=lower, upper=upper)
+            bkg = pm.Exponential(lambd=0.05,
+                                lower=lower, upper=upper)
             model = pm.SumPDF(
                 pdfs=[sig, bkg],
                 extended_vals=[500.0, 5000.0],
@@ -118,78 +116,91 @@
             )
             ```
           ]
-        ],
-        [
-          == #box(image("assets/logos/everwillow.svg", height: 1.5em), baseline: 20%)
-          #v(0.25em)
+          #v(-0.3em)
+          #align(right)[#text(size: 26pt, fill: rgb("#64748B"), style: "italic")[(distributions)]]
+        ]]
+      ],
+    )
+    #v(0.4em)
 
-          #text(size: 31pt)[
-            #codly(
-              display-name: false,
-              zebra-fill: princeton-zebra-fill,
-            )
+    // ─── ROW 2: Unbinned fit example ──────────────────────
+    #grid(
+      columns: (200pt, code-col, code-col),
+      column-gutter: 0.5em,
+      align: (left + horizon, top, top),
+
+      text(size: label-size, weight: "bold")[Quickstart],
+
+      [
+        #align(center)[#block(width: cell-width)[
+          #place(
+            top + right,
+            dx: -0.4em,
+            dy: 0.3em,
+            image("assets/logos/paramore.png", height: logo-height),
+          )
+          #text(size: code-size)[
+            #codly(display-name: false, zebra-fill: princeton-zebra-fill)
+            ```python
+            import paramore as pm
+            import evermore as evm
+            # parameters (a PyTree)
+            params = {
+                "sig_n": evm.Parameter(500.0),
+                "bkg_n": evm.Parameter(5000.0),
+                "mu":    evm.Parameter(125.0),
+            }
+            # extended NLL from params + model
+            def nll(p, data):
+                return pm.create_extended_nll(p, model, data)
+            ```
+          ]
+          #v(-0.3em)
+          #align(right)[#text(size: 26pt, fill: rgb("#64748B"), style: "italic")[(unbinned)]]
+        ]]
+      ],
+      [
+        #align(center)[#block(width: cell-width)[
+          #place(
+            top + right,
+            dx: -0.4em,
+            dy: 0.3em,
+            image("assets/logos/everwillow.svg", height: logo-height-ew),
+          )
+          #text(size: code-size)[
+            #codly(display-name: false, zebra-fill: princeton-zebra-fill)
             ```python
             from jax.random import normal, key
             import everwillow as ew
             import everwillow.statelib as sl
-
             # observed unbinned masses
             data = normal(key(0), (10_000,)) * 2 + 125
-
-            # extended NLL from params + model
-            nll = lambda p, d:
-                pm.create_extended_nll(p, model, d)
-            state = sl.State.from_pytree(params)
-            obs = {"data": data}
-
             # fit & parameter uncertainties
+            state  = sl.State.from_pytree(params)
+            obs    = {"data": data}
             result = ew.fit(nll, state, obs)
-            unc = ew.uncertainties(
-                nll, result.params, obs
-            )
+            unc    = ew.uncertainties(nll, result.params, obs)
             ```
           ]
-        ],
-      ),
+          #v(-0.3em)
+          #align(right)[#text(size: 26pt, fill: rgb("#64748B"), style: "italic")[(nll-agnostic)]]
+        ]]
+      ],
     )
   ]
-
+  #v(-1.0em)
   #section[
-    // section title
-    #heading("Interopability and Likelihood Combination", level: 1)
-    #v(0.5em)
-
-    // content
-    #columns(3)[
-
-      == Models (pyhf, evermore, ...)
-      #v(0.25em)
-      #lorem(50)
-
-      #colbreak()
-
-      == Combined Likelihood (statelib)
-      #v(0.25em)
-      #lorem(50)
-
-      #colbreak()
-
-      == Everwillow (Inference)
-      #v(0.25em)
-      #lorem(50)
-    ]
+    #align(center)[#heading("Interoperability and likelihood combination", level: 1)]
+    #v(1.0em)
+    #align(center)[#image("assets/infographs/interop_2.pdf", width: 62%)]
   ]
 
-  #clue(
-    accent-color: princeton-orange,
-    title: "Links and Resources",
-    icon: emoji.clip,
-  )[
-    Checkout out the projects on #link("GitHub")[GitHub]:
-
-    - #link("https://github.com/pfackeldey/evermore")[evermore]
-    - #link("https://github.com/maxgalli/paramore")[paramore]
-    - #link("https://github.com/MoAly98/everwillow")[everwillow]
-  ]
+  // #clue(
+  //   accent-color: princeton-orange,
+  //   title: "Interested to learn more?",
+  //   icon: emoji.clip,
+  // )[
+  //   Checkout out the projects on #link("GitHub")[GitHub]: #link("https://github.com/pfackeldey/evermore")[evermore], #link("https://github.com/maxgalli/paramore")[paramore], #link("https://github.com/MoAly98/everwillow")[everwillow]
+  // ]
 
 ]
