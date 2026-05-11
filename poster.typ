@@ -16,11 +16,13 @@
   columns: 1,
 )
 
+
 // global styling & colors
 #set text(size: 36pt)
 #show link: set text(fill: blue)
 #show link: underline
 
+#show heading.where(level: 2): set align(center)
 
 // poster content, function from `template.typ`
 #poster[
@@ -47,72 +49,109 @@
   ]
 
   #section[
-    // section title
-    #heading("Quickstart: Code Example", level: 1)
+    #heading("Quickstart: unbinned fit", level: 1)
     #v(0.5em)
 
-    // content
-    #columns(3)[
+    #block(
+      //fill: princeton-orange.transparentize(95%),
+      //stroke: princeton-orange.transparentize(60%) + 0.8pt,
+      //radius: 6pt,
+      //inset: 1.2em,
+      //width: 100%,
+      grid(
+        columns: (32%, 30%, 33%),
+        column-gutter: 1em,
+        [
+          == #box(image("evermore.png", height: 1.5em), baseline: 20%)
+          #v(0.25em)
 
-      == Evermore (Binned)
-      #v(0.25em)
+          #codly(
+            display-name: false,
+            zebra-fill: princeton-zebra-fill,
+            // highlights: (
+            //   (line: 6, start: 3, end: 4, fill: princeton-orange),
+            //   (line: 7, start: 3, end: 6, fill: princeton-orange),
+            // ),
+          )
+          ```python
+          import typing as tp
+          import evermore as evm
 
-      #codly(
-        languages: codly-languages,
-        zebra-fill: princeton-zebra-fill,
-        highlights: (
-          (line: 6, start: 3, end: 4, fill: princeton-orange),
-          (line: 7, start: 3, end: 6, fill: princeton-orange),
-        ),
-      )
-      ```python
-      import typing as tp
-      import evermore as evm
+          # PyTree of evm.Parameters
+          class Params(tp.NamedTuple):
+            mu: evm.Parameter
+            syst: evm.NormalParameter
 
-      # PyTree of evm.Parameters
-      class Params(tp.NamedTuple):
-        mu: evm.Parameter
-        syst: evm.NormalParameter
+          params = Params(
+            mu=evm.Parameter(1.0),
+            syst=evm.NormalParameter(0.0),
+          )
+          ```
+        ],
+        [
+          == #box(image("paramore.png", height: 1.5em), baseline: 20%)
+          #v(0.25em)
 
-      params = Params(
-        mu=evm.Parameter(1.0),
-        syst=evm.NormalParameter(0.0),
-      )
-      ```
+          #text(size: 31pt)[
+            #codly(
+              display-name: false,
+              zebra-fill: princeton-zebra-fill,
+            )
+            ```python
+            import paramore as pm
 
-      #colbreak()
+            lower, upper = 100.0, 180.0
 
-      == #box(image("paramore.png", height: 1.5em), baseline: 30%) Paramore (Unbinned)
-      #v(0.25em)
+            sig = pm.Gaussian(
+                mu=125.0, sigma=2.0,
+                lower=lower, upper=upper
+            )
+            bkg = pm.Exponential(
+                lambd=0.05,
+                lower=lower, upper=upper
+            )
 
-      #text(size: 31pt)[
-        #codly(
-          languages: codly-languages,
-          zebra-fill: princeton-zebra-fill,
-        )
-        ```python
-        import paramore as pm
+            model = pm.SumPDF(
+                pdfs=[sig, bkg],
+                extended_vals=[500.0, 5000.0],
+                lower=lower, upper=upper,
+            )
+            ```
+          ]
+        ],
+        [
+          == #box(image("everwillow.svg", height: 1.5em), baseline: 20%)
+          #v(0.25em)
 
-        lower, upper = 100.0, 180.0
+          #text(size: 31pt)[
+            #codly(
+              display-name: false,
+              zebra-fill: princeton-zebra-fill,
+            )
+            ```python
+            from jax.random import normal, key
+            import everwillow as ew
+            import everwillow.statelib as sl
 
-        signal = pm.Gaussian(mu=125.0, sigma=2.0, lower=lower, upper=upper)
-        background = pm.Exponential(lambd=0.05, lower=lower, upper=upper)
+            # observed unbinned masses
+            data = normal(key(0), (10_000,)) * 2 + 125
 
-        model = pm.SumPDF(
-            pdfs=[signal, background],
-            extended_vals=[500.0, 5000.0],
-            lower=lower,
-            upper=upper
-        )
-        ```
-      ]
+            # extended NLL from params + model
+            nll = lambda p, d:
+                pm.create_extended_nll(p, model, d)
+            state = sl.State.from_pytree(params)
+            obs = {"data": data}
 
-      #colbreak()
-
-      == Everwillow (Inference)
-      #v(0.25em)
-      #lorem(66)
-    ]
+            # fit & parameter uncertainties
+            result = ew.fit(nll, state, obs)
+            unc = ew.uncertainties(
+                nll, result.params, obs
+            )
+            ```
+          ]
+        ],
+      ),
+    )
   ]
 
   #section[
