@@ -30,7 +30,7 @@
     #align(left)[#heading("Statistical Analysis in HEP", level: 1)]
     #v(0.5em)
     #align(center)[
-      #image("hepstats.pdf", width: 60%)   // was 92%
+      #image("assets/infographs/hepstats.pdf", width: 60%)   // was 92%
     ]
   ]
 
@@ -43,7 +43,7 @@
         columns: (35%, 62.5%),
         gutter: 1em,
         align: horizon,
-        align(center)[#image("ecosys.pdf", width: 100%)], align(center)[#image("transforms_color.pdf", width: 100%)],
+        align(center)[#image("assets/infographs/ecosys.pdf", width: 100%)], align(center)[#image("assets/infographs/transforms_color.pdf", width: 100%)],
       )
     ]
   ]
@@ -62,7 +62,7 @@
         columns: (32%, 30%, 33%),
         column-gutter: 1em,
         [
-          == #box(image("evermore.png", height: 1.5em), baseline: 20%)
+          == #box(image("assets/logos/evermore.png", height: 1.5em), baseline: 20%)
           #v(0.25em)
 
           #codly(
@@ -89,7 +89,7 @@
           ```
         ],
         [
-          == #box(image("paramore.png", height: 1.5em), baseline: 20%)
+          == #box(image("assets/logos/paramore.png", height: 1.5em), baseline: 20%)
           #v(0.25em)
 
           #text(size: 31pt)[
@@ -120,7 +120,7 @@
           ]
         ],
         [
-          == #box(image("everwillow.svg", height: 1.5em), baseline: 20%)
+          == #box(image("assets/logos/everwillow.svg", height: 1.5em), baseline: 20%)
           #v(0.25em)
 
           #text(size: 31pt)[
