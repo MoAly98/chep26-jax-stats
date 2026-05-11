@@ -33,27 +33,16 @@
   ]
 
   #section[
-    // section title
-    #heading("Why JAX?", level: 1)
+    #align(left)[#heading("Why JAX?", level: 1)]
     #v(0.5em)
 
-    // content
-    #columns(2)[
-
-      == Transforms
-      #v(0.25em)
-      - jax.jit: compile your code for lightning-fast performance
-      - jax.grad: automatic differentiation for easy gradient-based optimization
-      - jax.vmap: vectorize your code for efficient batch processing
-      #image("transforms.pdf", width: 92%)
-
-      #colbreak()
-
-      == JAX Ecosystem
-      #v(0.25em)
-      - optimistix: JAX transform-compatible optimization algorithms
-      - orbax: Checkpointing and model management for JAX
-      - TensorBoard, mlflow, wandb, etc.: Seamless logging and visualization with JAX
+    #align(center)[
+      #grid(
+        columns: (35%, 62.5%),
+        gutter: 1em,
+        align: horizon,
+        align(center)[#image("ecosys.pdf", width: 100%)], align(center)[#image("transforms_color.pdf", width: 100%)],
+      )
     ]
   ]
 
