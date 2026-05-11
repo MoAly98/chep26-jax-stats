@@ -25,12 +25,11 @@
 // poster content, function from `template.typ`
 #poster[
   #section[
-    // section title
-    #heading("Primitives, Model Building, and Inference", level: 1)
+    #align(left)[#heading("Statistical Analysis in HEP", level: 1)]
     #v(0.5em)
-
-    // content
-    #lorem(100)
+    #align(center)[
+      #image("hepstats.pdf", width: 60%)   // was 92%
+    ]
   ]
 
   #section[
