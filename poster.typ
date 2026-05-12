@@ -42,13 +42,13 @@
     //   ],
     //   align(right)[#image("assets/infographs/whyjax_2.pdf", width: 84%)],
     // )
-    #align(center)[#heading[The case for #box(image("assets/logos/jax-logo.webp", height: 1em))]]
+    #align(center)[#heading[The case for #box(image("assets/logos/jax-logo.webp", height: 1em)) in HEP statistics]]
     #v(0.5em)
     #align(center)[#image("assets/infographs/whyjax_3.pdf", width: 96%)]
   ]
   #v(-1.5em)
   #section[
-    #align(center)[#heading("A JAX ecosystem for HEP statistics", level: 1)]
+    #align(center)[#heading("A fully differentiable JAX ecosystem for HEP statistics", level: 1)]
     #v(1.5em)
     #let logo-height = 60pt
     #let logo-height-ew = 80pt
@@ -97,7 +97,11 @@
                 ```
               ]
               #v(-0.3em)
-              #align(right)[#text(size: 26pt, fill: rgb("#64748B"), style: "italic")[(parameters + constraints)]]
+              #align(right)[#text(
+                size: 26pt,
+                fill: rgb("#64748B"),
+                style: "italic",
+              )[(parameters, constraints & modifiers)]]
             ]]
           ],
           [
@@ -165,7 +169,7 @@
                 ```
               ]
               #v(-0.3em)
-              #align(right)[#text(size: 26pt, fill: rgb("#64748B"), style: "italic")[(unbinned)]]
+              #align(right)[#text(size: 26pt, fill: rgb("#64748B"), style: "italic")[(unbinned model)]]
             ]]
           ],
           [
@@ -193,7 +197,7 @@
                 ```
               ]
               #v(-0.3em)
-              #align(right)[#text(size: 26pt, fill: rgb("#64748B"), style: "italic")[(nll-agnostic)]]
+              #align(right)[#text(size: 26pt, fill: rgb("#64748B"), style: "italic")[(likelihood-agnostic)]]
             ]]
           ],
         )

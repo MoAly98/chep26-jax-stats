@@ -30,7 +30,8 @@
           [
             #place(horizon + center)[
               #text(size: 65pt, fill: black)[
-                *A JAX Ecosystem for Likelihood-Based Inference in HEP*
+                //*A JAX Ecosystem for Likelihood-Based Inference in HEP*
+                *A differentiable HEP statistical analysis ecosystem with JAX*
                 #v(15%, weak: true)
               ]
               #text(size: 42pt)[
