@@ -6,7 +6,7 @@
 #let poster(body) = {
   grid(
     columns: 1,
-    rows: (8%, 1%, 89.5%, 1%, 0.5%),
+    rows: (7%, 1%, 90.5%, 1%, 0.5%),
 
     // Top = title row
     [
@@ -24,7 +24,7 @@
 
           // Left
           [
-            #place(horizon + left, figure(image("assets/logos/princeton-logo.svg", width: auto, height: 200pt)))
+            #place(horizon + left, figure(image("assets/logos/princeton-logo.svg", width: auto, height: 180pt)))
           ],
           // Center
           [
@@ -47,7 +47,7 @@
             #place(horizon + right, figure(image(
               "assets/logos/Iris-hep-5-just-graphic.svg",
               width: auto,
-              height: 200pt,
+              height: 180pt,
             )))
           ],
         ),

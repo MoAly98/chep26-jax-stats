@@ -29,7 +29,7 @@
   #section[
     #v(-0.8em)
     #align(center)[#heading("Statistical Analyses in HEP", level: 1)]
-    #v(0.8em)
+    #v(1.0em)
     #align(center)[#image("assets/infographs/hepstats_3.pdf", width: 96.2%)]
   ]
   #v(-1.4em)
@@ -39,13 +39,13 @@
     #align(center)[#text(
       size: 32pt,
     )[#h(20em) $arrow.r.curve$ an accelerated, more efficient `numpy` \+ gradients]]
-    #v(0.4em)
+    #v(0.8em)
     #align(center)[#image("assets/infographs/whyjax_3.pdf", width: 96%)]
   ]
-  #v(-1.3em)
+  #v(-1.15em)
   #section[
     #align(center)[#heading("A fully differentiable JAX ecosystem for HEP statistics", level: 1)]
-    #v(0.9em)
+    #v(1.3em)
     #let logo-height = 60pt
     #let logo-height-ew = 80pt
     #let code-size = 24pt
