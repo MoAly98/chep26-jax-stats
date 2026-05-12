@@ -42,7 +42,7 @@
     // )
     #align(center)[#heading[The case for #box(image("assets/logos/jax-logo.webp", height: 1em))]]
     #v(0.5em)
-    #align(center)[#image("assets/infographs/whyjax_2.pdf", width: 96%)]
+    #align(center)[#image("assets/infographs/whyjax_3.pdf", width: 96%)]
   ]
   #v(-1.5em)
   #section[
