@@ -27,7 +27,7 @@
 // poster content, function from `template.typ`
 #poster[
   #section[
-    #align(center)[#image("assets/infographs/hepstats_2.pdf", width: 100%)]
+    #align(center)[#image("assets/infographs/hepstats_3.pdf", width: 100%)]
   ]
   #v(-1.7em)
   #section[
