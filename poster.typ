@@ -27,29 +27,25 @@
 // poster content, function from `template.typ`
 #poster[
   #section[
-    #v(-1.0em)
+    #v(-0.8em)
     #align(center)[#heading("Statistical Analyses in HEP", level: 1)]
+    #v(0.8em)
     #align(center)[#image("assets/infographs/hepstats_3.pdf", width: 96.2%)]
   ]
-  #v(-1.7em)
+  #v(-1.4em)
   #section[
-    // #grid(
-    //   columns: (auto, 1fr),
-    //   column-gutter: 1.5em,
-    //   align: horizon,
-    //   heading(level: 1)[
-    //     The case for #box(image("assets/logos/jax-logo.webp", height: 1em))
-    //   ],
-    //   align(right)[#image("assets/infographs/whyjax_2.pdf", width: 84%)],
-    // )
     #align(center)[#heading[The case for #box(image("assets/logos/jax-logo.webp", height: 1em)) in HEP statistics]]
-    #v(0.5em)
+    #v(0.1em)
+    #align(center)[#text(
+      size: 32pt,
+    )[#h(20em) $arrow.r.curve$ an accelerated, more efficient `numpy` \+ gradients]]
+    #v(0.4em)
     #align(center)[#image("assets/infographs/whyjax_3.pdf", width: 96%)]
   ]
-  #v(-1.5em)
+  #v(-1.3em)
   #section[
     #align(center)[#heading("A fully differentiable JAX ecosystem for HEP statistics", level: 1)]
-    #v(1.5em)
+    #v(0.9em)
     #let logo-height = 60pt
     #let logo-height-ew = 80pt
     #let code-size = 24pt
@@ -223,10 +219,10 @@
       ),
     )]
   ]
-  #v(-1.0em)
+  #v(-1.4em)
   #section[
     #align(left)[#heading("Interoperability and likelihood combination", level: 1)]
-    #v(1.0em)
+    #v(0.9em)
     #box(width: 100%)[
       #image("assets/infographs/interop_2.pdf", width: 62%)
 

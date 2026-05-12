@@ -6,7 +6,7 @@
 #let poster(body) = {
   grid(
     columns: 1,
-    rows: (10%, 1%, 87%, 1%, 1%),
+    rows: (8%, 1%, 89.5%, 1%, 0.5%),
 
     // Top = title row
     [
@@ -18,7 +18,7 @@
         inset: 1%,
 
         grid(
-          columns: (10%, 78%, 10%),
+          columns: (9%, 80%, 9%),
           rows: 100%,
           stroke: none,
 
@@ -29,7 +29,7 @@
           // Center
           [
             #place(horizon + center)[
-              #text(size: 65pt, fill: black)[
+              #text(size: 62pt, fill: black)[
                 //*A JAX Ecosystem for Likelihood-Based Inference in HEP*
                 *A differentiable HEP statistical analysis ecosystem with JAX*
                 #v(15%, weak: true)
@@ -93,6 +93,7 @@
 
     // Bottom = footer
     [
+      #v(0.5em)
       #box(
         stroke: none,
         fill: white,
