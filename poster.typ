@@ -190,9 +190,46 @@
   ]
   #v(-1.0em)
   #section[
-    #align(center)[#heading("Interoperability and likelihood combination", level: 1)]
+    #align(left)[#heading("Interoperability and likelihood combination", level: 1)]
     #v(1.0em)
-    #align(center)[#image("assets/infographs/interop_2.pdf", width: 62%)]
+    #box(width: 100%)[
+      #image("assets/infographs/interop_2.pdf", width: 62%)
+
+      #place(
+        top + right,
+        box(width: 36%)[
+          #v(1.7em)
+          #align(center)[
+            #stack(
+              dir: ttb,
+              spacing: 0pt,
+              text(size: 54pt, weight: 900, fill: princeton-orange)[Differentiable Everything!],
+              v(26pt),
+              text(size: 26pt, fill: rgb("#000"))[composable · introspectable · fast · ML-friendly],
+            )
+          ]
+        ],
+      )
+      #v(-1.2em)
+      #place(
+        bottom + right,
+        box(width: 36%)[
+
+          #align(center)[
+            #stack(
+              dir: ttb,
+              spacing: 0pt,
+              text(size: 54pt, weight: 900, fill: princeton-orange)[Likelihood Agnostic],
+              v(26pt),
+              text(
+                size: 26pt,
+                fill: rgb("#000"),
+              )[all you need is #box(image("assets/logos/jax-logo.webp", height: 1em), baseline: 20%)],
+            )
+          ]
+        ],
+      )
+    ]
   ]
 
   // #clue(
