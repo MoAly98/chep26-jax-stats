@@ -29,7 +29,7 @@
   #section[
     #v(-1.0em)
     #align(center)[#heading("Statistical Analyses in HEP", level: 1)]
-    #align(center)[#image("assets/infographs/hepstats_3.pdf", width: 100%)]
+    #align(center)[#image("assets/infographs/hepstats_3.pdf", width: 96%)]
   ]
   #v(-1.7em)
   #section[
